@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="mainPage :: links">
+    <meta charset="UTF-8">
+    <title>Dodaj Kino</title>
+</head>
+<body>
+<header th:replace="mainPage :: header"></header>
+<div class="container">
+    <form th:action="@{/addCinema}" th:object="${cinema}" method="post">
+        <div>
+            <div>
+                <label for="cinemaName">Nazwa kina:</label>
+            </div>
+            <div>
+                <input id="cinemaName" type="text" th:field="*{cinemaName}">
+            </div>
+
+            <div>
+                <label for="city">Miasto:</label>
+            </div>
+            <div>
+                <input id="city" type="text" th:field="*{city}">
+            </div>
+<!--
+            <div>
+                <label for="movie">Film:</label>
+            </div>
+            <div>
+                <select id="movie" th:field="*{movies}">
+                    <option th:each="movies : ${cinema}" th:text="${cinema.cinemaName}" th:value="${cinema.cinemaId}">
+                    </option>
+                </select>
+            </div>
+-->
+        </div>
+        <div>
+            <input type="submit" th:value="Zapisz">
+        </div>
+    </form>
+</div>
+
+<footer th:replace="mainPage :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="mainPage :: links">
+    <meta charset="UTF-8">
+    <title>Lista Rezerwacji</title>
+</head>
+<body>
+<header th:replace="mainPage :: header"></header>
+
+<div class="container">
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Imie</th>
+        <th>Nazwisko</th>
+        <th>Seans</th>
+        <th>Edytuj</th>
+        <th>Usun</th>
+    </tr>
+    <tr th:each="reservation : ${reservationList}">
+        <th><p th:text="${reservation.getReservationId()}"></p></th>
+        <th><p th:text="${reservation.getFirstName()}"></p></th>
+        <th><p th:text="${reservation.getLastName()}"></p></th>
+        <th><p th:text="${reservation.getFilmShow().getCinema().getCinemaName()}"></p></th>
+        <th><p th:text="${reservation.getFilmShow().getMovie().getTitle()}"></p></th>
+        <th><p th:text="${reservation.getFilmShow().getFilmShowDate()}"></p></th>
+        <th><a th:href="@{'/updateReservation/' + ${reservation.getReservationId()}}">Edytuj</a></th>
+        <th><a th:href="@{'/deleteReservation/' + ${reservation.getReservationId()}}">Usun</a></th>
+    </tr>
+</table>
+</div>
+
+<footer th:replace="mainPage :: footer"></footer>
+</body>
+</html>

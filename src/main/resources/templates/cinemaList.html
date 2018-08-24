@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="mainPage :: links">
+    <meta charset="UTF-8">
+    <title>Lista Kin</title>
+</head>
+<body>
+<header th:replace="mainPage :: header"></header>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Nazwa Kina</th>
+            <th>Miasto</th>
+            <th>Edytuj</th>
+            <th>Usun</th>
+            <!--<th>Rezerwacja</th>-->
+        </tr>
+        <tr th:each="cinema : ${cinemaList}">
+            <th><p th:text="${cinema.getCinemaId()}"></p></th>
+            <th><p th:text="${cinema.getCinemaName()}"></p></th>
+            <th><p th:text="${cinema.getCity()}"></p></th>
+            <th><a th:href="@{'/updateCinema/' + ${cinema.getCinemaId()}}">Edytuj</a></th>
+            <th><a th:href="@{'/deleteCinema/' + ${cinema.getCinemaId()}}">Usun</a></th>
+        </tr>
+    </table>
+</div>
+
+<footer th:replace="mainPage :: footer"></footer>
+</body>
+</html>

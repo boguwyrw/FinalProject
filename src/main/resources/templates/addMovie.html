@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="mainPage :: links">
+    <meta charset="UTF-8">
+    <title>Dodaj film</title>
+</head>
+<body>
+<header th:replace="mainPage :: header"></header>
+<div class="container">
+
+        <form th:action="@{/addMovie}" th:object="${movie}" method="post">
+			<div>
+				<div>
+					<label for="movieTitle">Tytul filmu:</label>
+				</div>
+				<div>
+					<input id="movieTitle" type="text" th:field="*{title}">
+				</div>
+
+				<div>
+					<label for="director">Rezyser:</label>
+				</div>
+				<div>
+					<input id="director" type="text" th:field="*{director}">
+				</div>
+
+				<div>
+					<label for="releaseDate">Data premiery:</label>
+				</div>
+				<div>
+					<input id="releaseDate" type="date" th:field="*{releaseDate}">
+				</div>
+
+				<div>
+					<label for="startHour">Godzina premiery:</label>
+				</div>
+				<div>
+					<input id="startHour" type="time" th:field="*{startHour}">
+				</div>
+
+				<div>
+					<label for="filmGenre">Gatunek filmowy:</label>
+				</div>
+				<div>
+					<input id="filmGenre" type="text" th:field="*{filmGenre}">
+				</div>
+
+				<div>
+					<label for="ageRating">Przedzial wiekowy:</label>
+				</div>
+				<div>
+					<input id="ageRating" type="number" th:field="*{ageRating}">
+				</div>
+<!--
+				<div>
+					<label for="cinema">Kino:</label>
+				</div>
+				<div>
+					<select id="cinema" th:field="*{cinemas}"></select>
+				</div>
+-->
+			</div>
+			<div>
+				<input type="submit" th:value="Zapisz">
+			</div>
+        </form>
+
+</div>
+
+<footer th:replace="mainPage :: footer"></footer>
+</body>
+</html>

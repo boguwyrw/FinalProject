@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="mainPage :: links">
+    <meta charset="UTF-8">
+    <title>Dodaj Seans</title>
+</head>
+<body>
+<header th:replace="mainPage :: header"></header>
+<div class="container">
+    <form th:action="@{/addFilmShow}" th:object="${filmShowDTO}" method="post">
+        <div>
+
+            <div>
+                <label for="filmShowDate">Data:</label>
+            </div>
+            <div>
+                <input id="filmShowDate" type="datetime-local" th:field="*{filmShowDate}">
+            </div>
+
+            <div>
+                <label for="movie">Film:</label>
+            </div>
+            <div>
+                <select id="movie" th:field="*{movieId}">
+                    <option th:each="film : ${movies}" th:text="${film.title}" th:value="${film.movieId}">
+                    </option>
+                </select>
+            </div>
+
+            <div>
+                <label for="cinema">Kino:</label>
+            </div>
+            <div>
+                <select id="cinema" th:field="*{cinemaId}">
+                    <option th:each="kino : ${cinemas}" th:text="${kino.cinemaName}" th:value="${kino.cinemaId}">
+                    </option>
+                </select>
+            </div>
+
+        </div>
+        <div>
+            <input type="submit" th:value="Zapisz">
+        </div>
+    </form>
+</div>
+
+<footer th:replace="mainPage :: footer"></footer>
+</body>
+</html>

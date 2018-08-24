@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="links">
+    <meta charset="UTF-8">
+    <title>Strona filmowa</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<header th:fragment="header">
+    <div class="container">
+        <!--<div id="branding">-->
+            <!--<h1>Logo picture</h1>-->
+        <!--</div>-->
+        <nav>
+            <ul>
+                <li><a th:href="@{/addMovie}">Dodaj Film</a></li>
+                <li><a th:href="@{/movieList}">Lista Filmow</a></li>
+                <li><a th:href="@{/addCinema}">Dodaj Kino</a></li>
+                <li><a th:href="@{/cinemaList}">Lista Kin</a></li>
+                <li><a th:href="@{/addFilmShow}">Dodaj Seans</a></li>
+                <li><a th:href="@{/filmShowList}">List Seansow</a></li>
+                <li><a th:href="@{/addReservation}">Dodaj Rezerwacje</a></li>
+                <li><a th:href="@{/reservationList}">Lista Rezerwacji</a></li>
+                <!--<li><a href="#">Zaloguj</a></li>-->
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section id="main">
+    <div class="container">
+
+        <article id="showcase">
+            <h1>Profesjonalna strona filmowa</h1>
+            <p>Opis strony</p>
+        </article>
+<!--
+        <aside id="sidebar">
+            <h1>Wybierz gatunek</h1>
+            <form>
+                <input type="radio" name="" value=""> Horror <br>
+                <input type="radio" name="" value=""> Sensacja <br>
+                <input type="radio" name="" value=""> Komedia <br>
+                <input type="radio" name="" value=""> Romans <br>
+                <button type="submit" class="select">Wybierz</button>
+            </form>
+
+            <h1>Wybierz cene</h1>
+            <form>
+                <input type="text" placeholder="from">
+                <input type="text" placeholder="to"> <br>
+                <button type="submit" class="select">Wybierz</button>
+            </form>
+        </aside>
+-->
+    </div>
+</section>
+
+<footer th:fragment="footer">
+    <div class="container">
+        <nav>
+            <ul>
+                <!--<li><a href="#">FAQ</a></li>-->
+                <!--<li><a href="#">Kontakt</a></li>-->
+                <!--<li><a href="#">News</a></li>-->
+                <li><p>Created by boguwyrw</p></li>
+            </ul>
+        </nav>
+    </div>
+</footer>
+
+</body>
+</html>

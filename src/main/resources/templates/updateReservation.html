@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:replace="mainPage :: links">
+    <meta charset="UTF-8">
+    <title>Zmiana Rezerwacji</title>
+</head>
+<body>
+<header th:replace="mainPage :: header"></header>
+
+<div class="container">
+    <form th:action="@{/updateReservation}" th:object="${reservationDTO}" method="post">
+        <input th:value="*{reservationId}" th:field="*{reservationId}" hidden>
+        <div>
+
+            <div>
+                <label for="firstName">Imie:</label>
+            </div>
+            <div>
+                <input id="firstName" type="text" th:value="*{firstName}" th:field="*{firstName}">
+            </div>
+
+            <div>
+                <label for="lastName">Nazwisko:</label>
+            </div>
+            <div>
+                <input id="lastName" type="text" th:value="*{lastName}" th:field="*{lastName}">
+            </div>
+
+            <div>
+                <label for="filmShow">Seans:</label>
+            </div>
+            <div>
+                <select id="filmShow" th:field="*{filmShowId}">
+                    <option th:each="filmshow : ${filmShows}" th:text="${filmshow.getCinema().getCinemaName()+' '+filmshow.getMovie().getTitle()}" th:value="${filmshow.getFilmShowId()}">
+                    </option>
+                </select>
+            </div>
+
+        </div>
+
+        <div>
+            <input type="submit" th:value="Zapisz">
+        </div>
+
+    </form>
+</div>
+
+<footer th:replace="mainPage :: footer"></footer>
+</body>
+</html>

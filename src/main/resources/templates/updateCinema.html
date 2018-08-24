@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="mainPage :: links">
+    <meta charset="UTF-8">
+    <title>Dodaj Kino</title>
+</head>
+<body>
+<header th:replace="mainPage :: header"></header>
+<div class="container">
+    <form th:action="@{/updateCinema}" th:object="${cinema}" method="post">
+        <input th:value="*{cinemaId}" th:field="*{cinemaId}" hidden>
+        <div>
+            <div>
+                <label for="cinemaName">Nazwa kina:</label>
+            </div>
+            <div>
+                <input id="cinemaName" type="text" th:value="*{cinemaName}" th:field="*{cinemaName}">
+            </div>
+
+            <div>
+                <label for="city">Miasto:</label>
+            </div>
+            <div>
+                <input id="city" type="text" th:value="*{city}" th:field="*{city}">
+            </div>
+
+        </div>
+        <div>
+            <input type="submit" th:value="Zapisz">
+        </div>
+    </form>
+</div>
+
+<footer th:replace="mainPage :: footer"></footer>
+</body>
+</html>
