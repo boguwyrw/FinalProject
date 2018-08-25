@@ -12,12 +12,22 @@
         <!--<div id="branding">-->
             <!--<h1>Logo picture</h1>-->
         <!--</div>-->
-        <nav>
+        <nav class="nav">
             <ul>
-                <li><a th:href="@{/addMovie}">Dodaj Film</a></li>
-                <li><a th:href="@{/movieList}">Lista Filmow</a></li>
-                <li><a th:href="@{/addCinema}">Dodaj Kino</a></li>
-                <li><a th:href="@{/cinemaList}">Lista Kin</a></li>
+                <li>Film
+                    <ul class="sub-nav">
+                        <li><a th:href="@{/addMovie}">Dodaj Film</a></li>
+                        <li><a th:href="@{/movieList}">Lista Filmow</a></li>
+                    </ul>
+                    <span class="arrow">&#9660;</span>
+                </li>
+                <li>Kino
+                    <ul class="sub-nav">
+                        <li><a th:href="@{/addCinema}">Dodaj Kino</a></li>
+                        <li><a th:href="@{/cinemaList}">Lista Kin</a></li>
+                    </ul>
+                    <span class="arrow">&#9660;</span>
+                </li>
                 <li><a th:href="@{/addFilmShow}">Dodaj Seans</a></li>
                 <li><a th:href="@{/filmShowList}">List Seansow</a></li>
                 <li><a th:href="@{/addReservation}">Dodaj Rezerwacje</a></li>
