@@ -5,7 +5,7 @@
     <title>Dodaj Kino</title>
 </head>
 <body>
-<header th:replace="mainPage :: header"></header>
+<div th:replace="mainPage :: header"></div>
 <div class="container">
     <form th:action="@{/updateCinema}" th:object="${cinema}" method="post">
         <input th:value="*{cinemaId}" th:field="*{cinemaId}" hidden>
