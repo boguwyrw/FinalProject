@@ -24,19 +24,37 @@
                     <a class="red-link-home" th:href="@{/}">Home</a>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Film
+                    <a class="dropdown-toggle" data-toggle="dropdown">Film
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a th:href="@{/addMovie}">Dodaj Film</a></li>
                         <li><a th:href="@{/movieList}">Lista Filmow</a></li>
                     </ul>
                 </li>
-                <li><a th:href="@{/addCinema}">Dodaj Kino</a></li>
-                <li><a th:href="@{/cinemaList}">Lista Kin</a></li>
-                <li><a th:href="@{/addFilmShow}">Dodaj Seans</a></li>
-                <li><a th:href="@{/filmShowList}">List Seansow</a></li>
-                <li><a th:href="@{/addReservation}">Dodaj Rezerwacje</a></li>
-                <li><a th:href="@{/reservationList}">Lista Rezerwacji</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Kino
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/addCinema}">Dodaj Kino</a></li>
+                        <li><a th:href="@{/cinemaList}">Lista Kin</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Seans
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/addFilmShow}">Dodaj Seans</a></li>
+                        <li><a th:href="@{/filmShowList}">List Seansow</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Rezerwacja
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/addReservation}">Dodaj Rezerwacje</a></li>
+                        <li><a th:href="@{/reservationList}">Lista Rezerwacji</a></li>
+                    </ul>
+                </li>
                 <!--<li><a href="#">Zaloguj</a></li>-->
             </ul>
             </div>
@@ -75,6 +93,7 @@
 
 <footer th:fragment="footer">
     <div class="container">
+    <div class="panel-footer">
         <nav>
             <ul>
                 <!--<li><a href="#">FAQ</a></li>-->
@@ -83,6 +102,7 @@
                 <li><p>Created by boguwyrw</p></li>
             </ul>
         </nav>
+    </div>
     </div>
 </footer>
 

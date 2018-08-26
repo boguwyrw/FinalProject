@@ -11,3 +11,14 @@ body{
     border-radius: 6px;
     max-width: 80%;
 }
+
+ul {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    list-style: none !important;
+}
+
+.panel-footer {
+    padding: 0px 0px !important;
+    border-radius: 2px !important;
+}
