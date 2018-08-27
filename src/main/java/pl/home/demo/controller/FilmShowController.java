@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.home.demo.model.Cinema;
 import pl.home.demo.model.FilmShow;
 import pl.home.demo.model.FilmShowDTO;
@@ -113,5 +114,11 @@ public class FilmShowController {
         filmShowService.updateFilmShow(filmShow);
         return "redirect:/filmShowList/";
     }
-
+/*
+    @GetMapping(path = "/findFilmShowByMovieId")
+    public String findFilmShowByMovieId(Model model, @RequestParam(name = "movieId") Integer movieId){
+        model.addAttribute("filmShowList", filmShowService.findAllByMovieId(movieId));
+        return "filmShowList";
+    }
+*/
 }

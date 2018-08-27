@@ -8,6 +8,12 @@
 <div th:replace="mainPage :: header"></div>
 
 <!--<div class="container">-->
+<!--
+<form class="container" th:action="@{/findFilmShowByTitle}" th:object="${movie}" method="get">
+    <input id="searchMovie" type="text" name="movieTitle" placeholder="Wpisz tekst">
+    <button for="searchMovie">Szukaj</button>
+</form>
+-->
 <div class="row col-md-offset-1 col-md-10">
     <div class="row table-header">
         <div class="col-md-1">Id</div>
