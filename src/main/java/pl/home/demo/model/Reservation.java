@@ -27,11 +27,5 @@ public class Reservation {
 
     @ManyToOne
     private FilmShow filmShow;
-/*
-    @ManyToOne // Many Reservations To One movie
-    private Movie movie;
 
-    @ManyToOne
-    private Cinema cinema;
-*/
 }

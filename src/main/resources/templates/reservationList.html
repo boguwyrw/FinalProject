@@ -11,9 +11,9 @@
 <div class="row col-md-offset-1 col-md-10">
     <div class="row table-header">
         <div class="col-md-1">Id</div>
-        <div class="col-md-3">Imie</div>
-        <div class="col-md-3">Nazwisko</div>
-        <div class="col-md-3">
+        <div class="col-md-2">Imie</div>
+        <div class="col-md-2">Nazwisko</div>
+        <div class="col-md-5">
         <div class="col-md-12">Seans</div>
         </div>
         <div class="col-md-2">
@@ -23,9 +23,9 @@
     </div>
     <div class="row table-row" th:each="reservation : ${reservationList}">
         <div class="col-md-1"><p th:text="${reservation.getReservationId()}"></p></div>
-        <div class="col-md-3"><p th:text="${reservation.getFirstName()}"></p></div>
-        <div class="col-md-3"><p th:text="${reservation.getLastName()}"></p></div>
-        <div class="col-md-3">
+        <div class="col-md-2"><p th:text="${reservation.getFirstName()}"></p></div>
+        <div class="col-md-2"><p th:text="${reservation.getLastName()}"></p></div>
+        <div class="col-md-5">
         <div class="col-md-3"><p th:text="${reservation.getFilmShow().getCinema().getCinemaName()}"></p></div>
         <div class="col-md-3"><p th:text="${reservation.getFilmShow().getMovie().getTitle()}"></p></div>
         <div class="col-md-6"><p th:text="${reservation.getFilmShow().getFilmShowDate()}"></p></div>

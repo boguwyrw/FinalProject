@@ -55,7 +55,14 @@
                         <li><a th:href="@{/reservationList}">Lista Rezerwacji</a></li>
                     </ul>
                 </li>
-                <!--<li><a href="#">Zaloguj</a></li>-->
+                <li class="active">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Logowanie</a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/addAppUser}">Zarejestruj</a></li>
+                        <li><a th:href="@{/login}">Zaloguj</a></li>
+                    </ul>
+                </li>
+
             </ul>
             </div>
         </nav>
