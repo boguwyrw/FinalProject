@@ -14,6 +14,9 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
 
+    private String firstName;
+    private String lastName;
+
     @NotNull
     private String username;
     @NotNull

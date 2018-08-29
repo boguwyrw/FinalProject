@@ -38,10 +38,14 @@ public class AppUserDetailsService implements UserDetailsService {
 
     private Collection<? extends GrantedAuthority> getRolesForUser(String username) {
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        if(username.equals("owner")){
+        if(username.equals("admin")){
             grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+            grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_OWNER"));
+        }else if(username.equals("owner")) {
+            grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_OWNER"));
         }
         grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+
         return grantedAuthorities;
     }
 

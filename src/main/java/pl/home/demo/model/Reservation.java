@@ -28,4 +28,6 @@ public class Reservation {
     @ManyToOne
     private FilmShow filmShow;
 
+    @ManyToOne
+    private AppUser appUser;
 }
