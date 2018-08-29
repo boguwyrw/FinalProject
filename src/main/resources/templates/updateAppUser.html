@@ -8,7 +8,7 @@
 <div th:replace="mainPage :: header"></div>
 <div class="container">
 
-    <form th:action="@{/updateAppUser}" th:object="${edited_user}" method="post"> <!-- @ to wysyla na a $ to zmienna -->
+    <form th:action="@{/updateAppUser}" th:object="${edited_user}" method="post">
         <input type="hidden" hidden th:field="*{userId}">
         <div>
             <div>

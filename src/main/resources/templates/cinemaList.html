@@ -7,7 +7,7 @@
 <body>
 <div th:replace="mainPage :: header"></div>
 
-<!--<div class="container">-->
+
     <div class="row col-md-offset-1 col-md-10">
         <div class="row table-header">
             <div class="col-md-1">Id</div>
@@ -15,7 +15,7 @@
             <div class="col-md-3">Miasto</div>
             <div class="col-md-2">Edytuj</div>
             <div class="col-md-2">Usun</div>
-            <!--<th>Rezerwacja</th>-->
+
         </div>
         <div class="row table-row" th:each="cinema : ${cinemaList}">
             <div class="col-md-1"><p th:text="${cinema.getCinemaId()}"></p></div>
@@ -25,7 +25,7 @@
             <div class="col-md-2"><a th:href="@{'/deleteCinema/' + ${cinema.getCinemaId()}}">Usun</a></div>
         </div>
     </div>
-<!--</div>-->
+
 
 <footer th:replace="mainPage :: footer"></footer>
 </body>

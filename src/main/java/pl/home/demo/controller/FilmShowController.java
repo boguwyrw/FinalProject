@@ -16,8 +16,10 @@ import pl.home.demo.service.FilmShowService;
 import pl.home.demo.service.MovieService;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 public class FilmShowController {
@@ -61,8 +63,20 @@ public class FilmShowController {
     }
 
     @GetMapping(path = "/filmShowList")
-    public String filmShowList(Model model){
+    public String filmShowList(Model model, @RequestParam(name = "sort", required = false) String sort){
         List<FilmShow> filmShowList = filmShowService.getAllFilmShow();
+        if(sort != null && !sort.isEmpty()){
+            filmShowList = filmShowList.stream().sorted(new Comparator<FilmShow>() {
+                @Override
+                public int compare(FilmShow o1, FilmShow o2) {
+                    if(sort.equals("asc")) {
+                        return o1.getMovie().getTitle().compareTo(o2.getMovie().getTitle());
+                    }else{
+                        return o2.getMovie().getTitle().compareTo(o1.getMovie().getTitle());
+                    }
+                }
+            }).collect(Collectors.toList());
+        }
         model.addAttribute("filmShowList", filmShowList);
         return "filmShowList";
     }
@@ -103,7 +117,6 @@ public class FilmShowController {
         // pobieramy z bazy danych film show ktory chcemy edytowac
         Optional<FilmShow> editedFilmShow = filmShowService.findFilmShow(filmShowDTO.getFilmShowId());
         FilmShow filmShow = editedFilmShow.get();
-//        FilmShow filmShow = new FilmShow(filmShowDTO.getFilmShowDate(), movieOptional.get(), cinemaOptional.get());
 
         // ustawiam nowe (zmienione rzeczy) na film show
         filmShow.setCinema(cinemaOptional.get());
@@ -114,18 +127,5 @@ public class FilmShowController {
         filmShowService.updateFilmShow(filmShow);
         return "redirect:/filmShowList/";
     }
-/*
-    @GetMapping(path = "/sort")
-    public String sort(Model model, @RequestParam(name="asc") boolean asc){
-        model.addAttribute("movieList", movieService.sortName(asc));
-        return "movieList";
-    }
-*/
-/*
-    @GetMapping(path = "/sortFilmShow")
-    public String sort(Model model, @RequestParam(name="asc") boolean asc){
-        model.addAttribute("filmShowList", filmShowService.sortName(asc));
-        return "filmShowList";
-    }
-*/
+
 }

@@ -33,13 +33,5 @@ public class FilmShowService {
     public void updateFilmShow(FilmShow filmShow) {
         filmShowRepository.save(filmShow);
     }
-/*
-    public List<FilmShow> sortName(boolean ascending){
-        if(ascending) {
-            return filmShowRepository.findAllByOrderByTitleAsc();
-        }else{
-            return filmShowRepository.findAllByOrderByTitleDesc();
-        }
-    }
-*/
+
 }

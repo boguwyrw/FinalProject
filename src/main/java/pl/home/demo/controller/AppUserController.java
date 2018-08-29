@@ -45,8 +45,8 @@ public class AppUserController {
     }
 
     @GetMapping(path = "/updateAppUser")
-    public String updateAppUser(Model model, Principal principal /*@PathVariable(name = "userId") Long userId*/){
-//        AppUser user = appUserService.findAppUser(principal.getName());/
+    public String updateAppUser(Model model, Principal principal){
+
         Optional<AppUser> appUserOptional = appUserService.findAppUser(principal.getName());
         if(appUserOptional.isPresent()){
             AppUser appUser = appUserOptional.get();

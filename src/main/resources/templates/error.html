@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="mainPage :: links">
+    <meta charset="UTF-8">
+    <title>Blad na stronie</title>
+</head>
+<body>
+<div th:replace="mainPage :: header"></div>
+
+<div class="container">
+    <p th:text="${errorMsg}"></p>
+    <a th:href="@{/}">Wroc do strony glownej</a>
+</div>
+
+<footer th:replace="mainPage :: footer"></footer>
+</body>
+</html>

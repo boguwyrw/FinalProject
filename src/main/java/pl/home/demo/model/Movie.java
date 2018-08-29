@@ -40,10 +40,7 @@ public class Movie {
     private String filmGenre;
     @NotNull
     private Integer ageRating;
-/*
-    @OneToMany // jeden film do wielu rezerwacji
-    private List<Reservation> reservations;
-*/
+
     @OneToMany
     private List<FilmShow> filmShows;
 }

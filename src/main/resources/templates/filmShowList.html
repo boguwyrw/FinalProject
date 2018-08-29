@@ -7,28 +7,22 @@
 <body>
 <div th:replace="mainPage :: header"></div>
 
-
-<!--<div class="container">-->
-
-    <!--
-    <form th:action="@{'/sortFilmShow'}" method="get">
-        <input name="asc" th:value="true" hidden>
-        <input type="submit" th:value="A-Z"></input>
-    </form>
-    -->
-<!--</div>-->
-
-<!--
-<form class="container" th:action="@{/findFilmShowByTitle}" th:object="${movie}" method="get">
-    <input id="searchMovie" type="text" name="movieTitle" placeholder="Wpisz tekst">
-    <button for="searchMovie">Szukaj</button>
-</form>
--->
 <div class="row col-md-offset-1 col-md-10">
     <div class="row table-header">
         <div class="col-md-1">Id</div>
         <div class="col-md-2">Data</div>
-        <div class="col-md-3">Film</div>
+        <div class="col-md-3">Film
+            <form class="horizontal-view" th:action="@{'/filmShowList'}" method="get">
+                <input name="sort" th:value="asc" hidden>
+                <input type="submit" th:value="A-Z"></input>
+            </form>
+
+            <form class="horizontal-view" th:action="@{'/filmShowList'}" method="get">
+                <input name="sort" th:value="desc" hidden>
+                <input type="submit" th:value="Z-A"></input>
+            </form>
+
+        </div>
         <div class="col-md-2">Kino</div>
         <div class="col-md-2">Edytuj</div>
         <div class="col-md-2">Usun</div>
@@ -42,7 +36,6 @@
         <div class="col-md-2"><a th:href="@{'/deleteFilmShow/' + ${filmshow.getFilmShowId()}}">Usun</a></div>
     </div>
 </div>
-<!--</div>-->
 
 <footer th:replace="mainPage :: footer"></footer>
 </body>

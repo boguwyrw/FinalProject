@@ -11,10 +11,7 @@ import pl.home.demo.repository.AppUserRepository;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-/*
-    @Autowired
-    AppUserRepository appUserRepository;
-*/
+
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
@@ -22,7 +19,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //http.authorizeRequests().anyRequest().permitAll();
+
         http.formLogin().loginPage("/login").and().logout()
                 .clearAuthentication(true)
                 .logoutUrl("/logout")

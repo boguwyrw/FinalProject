@@ -27,7 +27,6 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
-    // @ResponseBody zwraca nam Stringa - na stronie wyświetli się movieAdd
     @GetMapping(path = "/addMovie")
     public String addMovie(Model model){
         Movie movie = new Movie();
@@ -72,18 +71,9 @@ public class MovieController {
     }
 
     @GetMapping(path = "/findMovieByTitle")
-//    public String findMovieByTitle(Model model, /*@PathVariable(name = "movieTitle")*/ String movieTitle){
     public String findMovieByTitle(Model model, @RequestParam(name = "movieTitle") String movieTitle){
-//        List<Movie> movieList = movieService.getAllMovies();
-//        model.addAttribute("movieList", movieList.stream()
-//                .filter(
-//                        movie ->
-//                                movie.getTitle().toLowerCase()
-//                                        .contains(
-//                                                movieTitle.toLowerCase())).collect(Collectors.toList()));
         model.addAttribute("movieList", movieService.findAllByTitleContainingString(movieTitle));
         return "movieList";
-
     }
 
     @GetMapping(path = "/sort")
