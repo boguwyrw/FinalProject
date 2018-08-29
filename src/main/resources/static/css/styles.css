@@ -2,7 +2,7 @@ body{
     font: 15px/1.5 Arial, Helvetica, sans-serif;
     padding: 0;
     margin: 0;
-    background-color: #808080;
+    background-color: #f8f8ff !important;
 }
 
 .container-fluid {
@@ -33,4 +33,8 @@ ul {
     text-decoration:underline;
     font-family:inherit;
     font-size:inherit;
+}
+
+.horizontal-view{
+    float: left;
 }

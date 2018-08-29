@@ -115,9 +115,16 @@ public class FilmShowController {
         return "redirect:/filmShowList/";
     }
 /*
-    @GetMapping(path = "/findFilmShowByMovieId")
-    public String findFilmShowByMovieId(Model model, @RequestParam(name = "movieId") Integer movieId){
-        model.addAttribute("filmShowList", filmShowService.findAllByMovieId(movieId));
+    @GetMapping(path = "/sort")
+    public String sort(Model model, @RequestParam(name="asc") boolean asc){
+        model.addAttribute("movieList", movieService.sortName(asc));
+        return "movieList";
+    }
+*/
+/*
+    @GetMapping(path = "/sortFilmShow")
+    public String sort(Model model, @RequestParam(name="asc") boolean asc){
+        model.addAttribute("filmShowList", filmShowService.sortName(asc));
         return "filmShowList";
     }
 */

@@ -70,16 +70,7 @@ public class MovieController {
         movieService.deleteMovie(movieId);
         return "redirect:/movieList";
     }
-    /*
-    @GetMapping(path = "/movieList")
-    public String findMovieByTitle(Model model){
-        List<Movie> movieList = movieService.getAllMovies();
-        model.addAttribute("movieList", movieList);
-        return "movieList";
-    }
-    */
 
-    //@GetMapping(path = "/findMovieByTitle/{movieTitle}")
     @GetMapping(path = "/findMovieByTitle")
 //    public String findMovieByTitle(Model model, /*@PathVariable(name = "movieTitle")*/ String movieTitle){
     public String findMovieByTitle(Model model, @RequestParam(name = "movieTitle") String movieTitle){
@@ -96,12 +87,8 @@ public class MovieController {
     }
 
     @GetMapping(path = "/sort")
-    public String sortDesc(Model model, @RequestParam(name="asc") boolean asc){
-//        List<Movie> sortDesc = movieService.getAllMovies();
-        //sort(Sort.Direction.DESC, sortDesc);
-//        model.addAttribute("movieList", sortDesc.sort(Sort.Direction.DESC));
+    public String sort(Model model, @RequestParam(name="asc") boolean asc){
         model.addAttribute("movieList", movieService.sortName(asc));
-        //model.addAttribute("movieList", sortDesc.sort(Sort.Direction.DESC, movieTitle));
         return "movieList";
     }
 }

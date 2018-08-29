@@ -14,7 +14,7 @@
         <input id="searchMovie" type="text" name="movieTitle" placeholder="Wpisz tekst">
         <button for="searchMovie">Szukaj</button>
     </form>
-
+<!--
     <form th:action="@{'/sort'}" method="get">
         <input name="asc" th:value="true" hidden>
         <input type="submit" th:value="A-Z"></input>
@@ -24,13 +24,25 @@
         <input name="asc" th:value="false" hidden>
         <input type="submit" th:value="Z-A"></input>
     </form>
-
+-->
 </div>
 
 <div class="row col-md-offset-1 col-md-10">
     <div class="row table-header">
         <div class="col-md-1">Id</div>
-        <div class="col-md-2">Tytul</div>
+        <div class="col-md-2">Tytul
+
+            <form class="horizontal-view" th:action="@{'/sort'}" method="get">
+                <input name="asc" th:value="true" hidden>
+                <input type="submit" th:value="A-Z"></input>
+            </form>
+
+            <form class="horizontal-view" th:action="@{'/sort'}" method="get">
+                <input name="asc" th:value="false" hidden>
+                <input type="submit" th:value="Z-A"></input>
+            </form>
+
+        </div>
         <div class="col-md-2">Rezyser</div>
         <div class="col-md-2">Data premiery</div>
         <div class="col-md-1">Godzina premiery</div>
