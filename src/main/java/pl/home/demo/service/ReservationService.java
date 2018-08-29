@@ -2,6 +2,7 @@ package pl.home.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.home.demo.model.AppUser;
 import pl.home.demo.model.Movie;
 import pl.home.demo.model.Reservation;
 import pl.home.demo.repository.ReservationRepository;
@@ -16,12 +17,16 @@ public class ReservationService {
     private ReservationRepository reservationRepository;
 
 
-    public void addReservation(Reservation reservation){
-        reservationRepository.save(reservation);
+    public Reservation addReservation(Reservation reservation){
+        return reservationRepository.save(reservation);
     }
 
     public List<Reservation> getAllReservations(){
         return reservationRepository.findAll();
+    }
+
+    public List<Reservation> getAllMyReservations(AppUser appUser){
+        return reservationRepository.findAllByAppUser(appUser);
     }
 
     public void deleteReservation(Long reservationId) {

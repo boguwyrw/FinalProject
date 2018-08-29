@@ -5,32 +5,56 @@
     <title>Lista filmow</title>
 </head>
 <body>
-<header th:replace="mainPage :: header"></header>
+<div th:replace="mainPage :: header"></div>
+
 <div class="container">
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Tytul</th>
-        <th>Rezyser</th>
-        <th>Data premiery</th>
-        <th>Godzina premiery</th>
-        <th>Gatunek</th>
-        <th>Kategoria wiekowa</th>
-        <th>Edytuj</th>
-        <th>Usun</th>
-    </tr>
-    <tr th:each="movie : ${movieList}">
-        <th><p th:text="${movie.getMovieId()}"></p></th>
-        <th><p th:text="${movie.getTitle()}"></p></th>
-        <th><p th:text="${movie.getDirector()}"></p></th>
-        <th><p th:text="${movie.getReleaseDate()}"></p></th>
-        <th><p th:text="${movie.getStartHour()}"></p></th>
-        <th><p th:text="${movie.getFilmGenre()}"></p></th>
-        <th><p th:text="${movie.getAgeRating()}"></p></th>
-        <th><a th:href="@{'/updateMovie/' + ${movie.getMovieId()}}">Edytuj</a></th>
-        <th><a th:href="@{'/deleteMovie/' + ${movie.getMovieId()}}">Usun</a></th>
-    </tr>
-</table>
+
+    <form th:action="@{/findMovieByTitle}" method="get">
+        <input id="searchMovie" type="text" name="movieTitle" placeholder="Wpisz tekst">
+        <button for="searchMovie">Szukaj</button>
+    </form>
+
+</div>
+
+<div class="row col-md-offset-1 col-md-10">
+    <div class="row table-header">
+        <div class="col-md-1">Id</div>
+        <div class="col-md-2">Tytul
+
+            <form class="horizontal-view" th:action="@{'/sort'}" method="get">
+                <input name="asc" th:value="true" hidden>
+                <input type="submit" th:value="A-Z"></input>
+            </form>
+
+            <form class="horizontal-view" th:action="@{'/sort'}" method="get">
+                <input name="asc" th:value="false" hidden>
+                <input type="submit" th:value="Z-A"></input>
+            </form>
+
+        </div>
+        <div class="col-md-2">Rezyser</div>
+        <div class="col-md-2">Data premiery</div>
+        <div class="col-md-1">Godzina premiery</div>
+        <div class="col-md-1">Gatunek</div>
+        <div class="col-md-1">Kategoria wiekowa</div>
+        <div class="col-md-2">
+            <div class="col-md-6">Edytuj</div>
+            <div class="col-md-6">Usun</div>
+        </div>
+    </div>
+    <div class="row table-row" th:each="movie : ${movieList}">
+        <div class="col-md-1"><p th:text="${movie.getMovieId()}"></p></div>
+        <div class="col-md-2"><p th:text="${movie.getTitle()}"></p></div>
+        <div class="col-md-2"><p th:text="${movie.getDirector()}"></p></div>
+        <div class="col-md-2"><p th:text="${movie.getReleaseDate()}"></p></div>
+        <div class="col-md-1"><p th:text="${movie.getStartHour()}"></p></div>
+        <div class="col-md-1"><p th:text="${movie.getFilmGenre()}"></p></div>
+        <div class="col-md-1"><p th:text="${movie.getAgeRating()}"></p></div>
+        <div class="col-md-2">
+            <div class="col-md-6"><a th:href="@{'/updateMovie/' + ${movie.getMovieId()}}">Edytuj</a></div>
+            <div class="col-md-6"><a th:href="@{'/deleteMovie/' + ${movie.getMovieId()}}">Usun</a></div>
+        </div>
+    </div>
 </div>
 
 <footer th:replace="mainPage :: footer"></footer>

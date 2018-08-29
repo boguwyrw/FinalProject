@@ -24,10 +24,7 @@ public class Cinema {
     private String cinemaName;
     @NotNull
     private String city;
-/*
-    @OneToMany
-    private List<Reservation> reservations;
-*/
+
     @OneToMany
     private List<FilmShow> filmShows;
 }

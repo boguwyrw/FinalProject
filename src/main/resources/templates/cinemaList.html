@@ -5,27 +5,27 @@
     <title>Lista Kin</title>
 </head>
 <body>
-<header th:replace="mainPage :: header"></header>
+<div th:replace="mainPage :: header"></div>
 
-<div class="container">
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Nazwa Kina</th>
-            <th>Miasto</th>
-            <th>Edytuj</th>
-            <th>Usun</th>
-            <!--<th>Rezerwacja</th>-->
-        </tr>
-        <tr th:each="cinema : ${cinemaList}">
-            <th><p th:text="${cinema.getCinemaId()}"></p></th>
-            <th><p th:text="${cinema.getCinemaName()}"></p></th>
-            <th><p th:text="${cinema.getCity()}"></p></th>
-            <th><a th:href="@{'/updateCinema/' + ${cinema.getCinemaId()}}">Edytuj</a></th>
-            <th><a th:href="@{'/deleteCinema/' + ${cinema.getCinemaId()}}">Usun</a></th>
-        </tr>
-    </table>
-</div>
+
+    <div class="row col-md-offset-1 col-md-10">
+        <div class="row table-header">
+            <div class="col-md-1">Id</div>
+            <div class="col-md-4">Nazwa Kina</div>
+            <div class="col-md-3">Miasto</div>
+            <div class="col-md-2">Edytuj</div>
+            <div class="col-md-2">Usun</div>
+
+        </div>
+        <div class="row table-row" th:each="cinema : ${cinemaList}">
+            <div class="col-md-1"><p th:text="${cinema.getCinemaId()}"></p></div>
+            <div class="col-md-4"><p th:text="${cinema.getCinemaName()}"></p></div>
+            <div class="col-md-3"><p th:text="${cinema.getCity()}"></p></div>
+            <div class="col-md-2"><a th:href="@{'/updateCinema/' + ${cinema.getCinemaId()}}">Edytuj</a></div>
+            <div class="col-md-2"><a th:href="@{'/deleteCinema/' + ${cinema.getCinemaId()}}">Usun</a></div>
+        </div>
+    </div>
+
 
 <footer th:replace="mainPage :: footer"></footer>
 </body>

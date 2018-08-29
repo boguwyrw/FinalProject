@@ -5,27 +5,36 @@
     <title>Lista Seansow</title>
 </head>
 <body>
-<header th:replace="mainPage :: header"></header>
+<div th:replace="mainPage :: header"></div>
 
-<div class="container">
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Data</th>
-        <th>Film</th>
-        <th>Kino</th>
-        <th>Edytuj</th>
-        <th>Usun</th>
-    </tr>
-    <tr th:each="filmshow : ${filmShowList}">
-        <th><p th:text="${filmshow.getFilmShowId()}"></p></th>
-        <th><p th:text="${filmshow.getFilmShowDate()}"></p></th>
-        <th><p th:text="${filmshow.getMovie().getTitle()}"></p></th>
-        <th><p th:text="${filmshow.getCinema().getCinemaName()}"></p></th>
-        <th><a th:href="@{'/updateFilmShow/' + ${filmshow.getFilmShowId()}}">Edytuj</a></th>
-        <th><a th:href="@{'/deleteFilmShow/' + ${filmshow.getFilmShowId()}}">Usun</a></th>
-    </tr>
-</table>
+<div class="row col-md-offset-1 col-md-10">
+    <div class="row table-header">
+        <div class="col-md-1">Id</div>
+        <div class="col-md-2">Data</div>
+        <div class="col-md-3">Film
+            <form class="horizontal-view" th:action="@{'/filmShowList'}" method="get">
+                <input name="sort" th:value="asc" hidden>
+                <input type="submit" th:value="A-Z"></input>
+            </form>
+
+            <form class="horizontal-view" th:action="@{'/filmShowList'}" method="get">
+                <input name="sort" th:value="desc" hidden>
+                <input type="submit" th:value="Z-A"></input>
+            </form>
+
+        </div>
+        <div class="col-md-2">Kino</div>
+        <div class="col-md-2">Edytuj</div>
+        <div class="col-md-2">Usun</div>
+    </div>
+    <div class="row table-row" th:each="filmshow : ${filmShowList}">
+        <div class="col-md-1"><p th:text="${filmshow.getFilmShowId()}"></p></div>
+        <div class="col-md-2"><p th:text="${filmshow.getFilmShowDate()}"></p></div>
+        <div class="col-md-3"><p th:text="${filmshow.getMovie().getTitle()}"></p></div>
+        <div class="col-md-2"><p th:text="${filmshow.getCinema().getCinemaName()}"></p></div>
+        <div class="col-md-2"><a th:href="@{'/updateFilmShow/' + ${filmshow.getFilmShowId()}}">Edytuj</a></div>
+        <div class="col-md-2"><a th:href="@{'/deleteFilmShow/' + ${filmshow.getFilmShowId()}}">Usun</a></div>
+    </div>
 </div>
 
 <footer th:replace="mainPage :: footer"></footer>

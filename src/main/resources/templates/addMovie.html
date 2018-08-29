@@ -5,7 +5,7 @@
     <title>Dodaj film</title>
 </head>
 <body>
-<header th:replace="mainPage :: header"></header>
+<div th:replace="mainPage :: header"></div>
 <div class="container">
 
         <form th:action="@{/addMovie}" th:object="${movie}" method="post">
@@ -51,14 +51,7 @@
 				<div>
 					<input id="ageRating" type="number" th:field="*{ageRating}">
 				</div>
-<!--
-				<div>
-					<label for="cinema">Kino:</label>
-				</div>
-				<div>
-					<select id="cinema" th:field="*{cinemas}"></select>
-				</div>
--->
+
 			</div>
 			<div>
 				<input type="submit" th:value="Zapisz">

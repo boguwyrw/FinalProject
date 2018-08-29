@@ -5,7 +5,7 @@
     <title>Zmiana filmow</title>
 </head>
 <body>
-<header th:replace="mainPage :: header"></header>
+<div th:replace="mainPage :: header"></div>
 <div class="container">
 
     <form th:action="@{/updateMovie}" th:object="${movie}" method="post">

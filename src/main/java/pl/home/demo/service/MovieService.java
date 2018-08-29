@@ -22,6 +22,14 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
+    public List<Movie> sortName(boolean ascending){
+        if(ascending) {
+            return movieRepository.findAllByOrderByTitleAsc();
+        }else{
+            return movieRepository.findAllByOrderByTitleDesc();
+        }
+    }
+
     public Optional<Movie> findMovie(Long movieId){
         return movieRepository.findById(movieId);
     }
@@ -32,5 +40,9 @@ public class MovieService {
 
     public void updateMovie(Movie movie) {
         movieRepository.save(movie);
+    }
+
+    public List<Movie> findAllByTitleContainingString (String title){
+        return movieRepository.findAllByTitleContaining(title);
     }
 }
