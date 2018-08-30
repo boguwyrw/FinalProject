@@ -5,7 +5,7 @@
     <title>Dodaj Seans</title>
 </head>
 <body>
-<header th:replace="mainPage :: header"></header>
+<div th:replace="mainPage :: header"></div>
 <div class="container">
     <form th:action="@{/addFilmShow}" th:object="${filmShowDTO}" method="post">
         <div>

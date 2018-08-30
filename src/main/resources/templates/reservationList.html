@@ -5,29 +5,35 @@
     <title>Lista Rezerwacji</title>
 </head>
 <body>
-<header th:replace="mainPage :: header"></header>
+<div th:replace="mainPage :: header"></div>
 
-<div class="container">
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Imie</th>
-        <th>Nazwisko</th>
-        <th>Seans</th>
-        <th>Edytuj</th>
-        <th>Usun</th>
-    </tr>
-    <tr th:each="reservation : ${reservationList}">
-        <th><p th:text="${reservation.getReservationId()}"></p></th>
-        <th><p th:text="${reservation.getFirstName()}"></p></th>
-        <th><p th:text="${reservation.getLastName()}"></p></th>
-        <th><p th:text="${reservation.getFilmShow().getCinema().getCinemaName()}"></p></th>
-        <th><p th:text="${reservation.getFilmShow().getMovie().getTitle()}"></p></th>
-        <th><p th:text="${reservation.getFilmShow().getFilmShowDate()}"></p></th>
-        <th><a th:href="@{'/updateReservation/' + ${reservation.getReservationId()}}">Edytuj</a></th>
-        <th><a th:href="@{'/deleteReservation/' + ${reservation.getReservationId()}}">Usun</a></th>
-    </tr>
-</table>
+<div class="row col-md-offset-1 col-md-10">
+    <div class="row table-header">
+        <div class="col-md-1">Id</div>
+        <div class="col-md-2">Imie</div>
+        <div class="col-md-2">Nazwisko</div>
+        <div class="col-md-5">
+        <div class="col-md-12">Seans</div>
+        </div>
+        <div class="col-md-2">
+        <div class="col-md-6">Edytuj</div>
+        <div class="col-md-6">Usun</div>
+        </div>
+    </div>
+    <div class="row table-row" th:each="reservation : ${reservationList}">
+        <div class="col-md-1"><p th:text="${reservation.getReservationId()}"></p></div>
+        <div class="col-md-2"><p th:text="${reservation.getFirstName()}"></p></div>
+        <div class="col-md-2"><p th:text="${reservation.getLastName()}"></p></div>
+        <div class="col-md-5">
+        <div class="col-md-3"><p th:text="${reservation.getFilmShow().getCinema().getCinemaName()}"></p></div>
+        <div class="col-md-3"><p th:text="${reservation.getFilmShow().getMovie().getTitle()}"></p></div>
+        <div class="col-md-6"><p th:text="${reservation.getFilmShow().getFilmShowDate()}"></p></div>
+        </div>
+        <div class="col-md-2">
+        <div class="col-md-6"><a th:href="@{'/updateReservation/' + ${reservation.getReservationId()}}">Edytuj</a></div>
+        <div class="col-md-6"><a th:href="@{'/deleteReservation/' + ${reservation.getReservationId()}}">Usun</a></div>
+        </div>
+    </div>
 </div>
 
 <footer th:replace="mainPage :: footer"></footer>

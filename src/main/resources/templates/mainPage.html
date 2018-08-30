@@ -1,42 +1,70 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:fragment="links">
     <meta charset="UTF-8">
     <title>Strona filmowa</title>
+
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
 
-<header th:fragment="header">
-    <div class="container">
-        <!--<div id="branding">-->
-            <!--<h1>Logo picture</h1>-->
-        <!--</div>-->
-        <nav class="nav">
-            <ul>
-                <li>Film
-                    <ul class="sub-nav">
-                        <li><a th:href="@{/addMovie}">Dodaj Film</a></li>
-                        <li><a th:href="@{/movieList}">Lista Filmow</a></li>
-                    </ul>
-                    <span class="arrow">&#9660;</span>
-                </li>
-                <li>Kino
-                    <ul class="sub-nav">
-                        <li><a th:href="@{/addCinema}">Dodaj Kino</a></li>
-                        <li><a th:href="@{/cinemaList}">Lista Kin</a></li>
-                    </ul>
-                    <span class="arrow">&#9660;</span>
-                </li>
-                <li><a th:href="@{/addFilmShow}">Dodaj Seans</a></li>
-                <li><a th:href="@{/filmShowList}">List Seansow</a></li>
-                <li><a th:href="@{/addReservation}">Dodaj Rezerwacje</a></li>
-                <li><a th:href="@{/reservationList}">Lista Rezerwacji</a></li>
-                <!--<li><a href="#">Zaloguj</a></li>-->
-            </ul>
-        </nav>
+<nav th:fragment="header" class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li class="active">
+                <a class="red-link-home" th:href="@{/}">Home</a>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown">Film
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li sec:authorize="hasRole('ROLE_OWNER')"><a th:href="@{/addMovie}">Dodaj Film</a></li>
+                    <li><a th:href="@{/movieList}">Lista Filmow</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown">Kino
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li sec:authorize="hasRole('ROLE_OWNER')"><a th:href="@{/addCinema}">Dodaj Kino</a></li>
+                    <li><a th:href="@{/cinemaList}">Lista Kin</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown">Seans
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li sec:authorize="hasRole('ROLE_OWNER')"><a th:href="@{/addFilmShow}">Dodaj Seans</a></li>
+                    <li><a th:href="@{/filmShowList}">List Seansow</a></li>
+                </ul>
+            </li>
+            <li class="dropdown" sec:authorize="isAuthenticated()">
+                <a class="dropdown-toggle" data-toggle="dropdown">Rezerwacja
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/addReservation}">Dodaj Rezerwacje</a></li>
+                    <li><a th:href="@{/reservationList}">Lista Rezerwacji</a></li>
+                    <li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/allReservationList}">Wszystkie rezerwacje</a></li>
+                </ul>
+            </li>
+            <li class="active">
+                <a class="dropdown-toggle" data-toggle="dropdown">Logowanie</a>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/addAppUser}">Zarejestruj</a></li>
+                    <li><a th:href="@{/login}">Zaloguj</a></li>
+                    <li><a th:href="@{/logout}">Wyloguj</a></li>
+                </ul>
+            </li>
+
+        </ul>
     </div>
-</header>
+</nav>
 
 <section id="main">
     <div class="container">
@@ -45,39 +73,24 @@
             <h1>Profesjonalna strona filmowa</h1>
             <p>Opis strony</p>
         </article>
-<!--
-        <aside id="sidebar">
-            <h1>Wybierz gatunek</h1>
-            <form>
-                <input type="radio" name="" value=""> Horror <br>
-                <input type="radio" name="" value=""> Sensacja <br>
-                <input type="radio" name="" value=""> Komedia <br>
-                <input type="radio" name="" value=""> Romans <br>
-                <button type="submit" class="select">Wybierz</button>
-            </form>
 
-            <h1>Wybierz cene</h1>
-            <form>
-                <input type="text" placeholder="from">
-                <input type="text" placeholder="to"> <br>
-                <button type="submit" class="select">Wybierz</button>
-            </form>
-        </aside>
--->
     </div>
 </section>
 
 <footer th:fragment="footer">
     <div class="container">
-        <nav>
-            <ul>
-                <!--<li><a href="#">FAQ</a></li>-->
-                <!--<li><a href="#">Kontakt</a></li>-->
-                <!--<li><a href="#">News</a></li>-->
-                <li><p>Created by boguwyrw</p></li>
-            </ul>
-        </nav>
+        <div sec:authorize="isAuthenticated()">
+            <a th:href="@{/updateAppUser}"><span th:text="${#authentication.getPrincipal().getUsername()}"></span></a>
+        </div>
+        <div class="panel-footer">
+            <nav>
+                <ul>
+                    <li><p>Created by boguwyrw</p></li>
+                </ul>
+            </nav>
+        </div>
     </div>
+
 </footer>
 
 </body>
